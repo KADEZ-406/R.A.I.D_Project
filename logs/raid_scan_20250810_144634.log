@@ -20,3 +20,18 @@
 2025-08-10 14:46:59,885 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://mail.smkmikael.sch.id
 2025-08-10 14:47:00,350 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
 2025-08-10 14:47:00,352 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://www.smkmikael.sch.id
+2025-08-10 14:47:01,526 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 37 URLs with parameters
+2025-08-10 14:47:01,527 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://smtp.smkmikael.sch.id
+2025-08-10 14:47:06,379 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:47:06,381 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://belajar.smkmikael.sch.id
+2025-08-10 14:47:08,110 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:47:08,112 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://simmico.smkmikael.sch.id
+2025-08-10 14:47:08,806 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 201 URLs with parameters
+2025-08-10 14:47:08,808 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://www.belajar.smkmikael.sch.id
+2025-08-10 14:47:11,261 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:47:11,262 - raid - INFO - comprehensive_discovery:726 - Discovery completed: 78 endpoints, 1349 parameters, 21 subdomains
+2025-08-10 14:47:11,276 - raid - INFO - save_discovery_results:750 - Discovery results saved to reports/discovery_results.json
+2025-08-10 14:47:11,277 - raid - INFO - create_scan_context:314 - Discovery results saved to reports/discovery_results.json
+2025-08-10 14:47:11,279 - raid - INFO - create_scan_context:324 - Enhanced discovery completed: 319 endpoints, 2140 parameters, 21 subdomains
+2025-08-10 14:47:11,294 - raid - INFO - run:84 - Testing 2118 parameterized endpoints
+2025-08-10 14:47:11,301 - raid - INFO - run:71 - Testing 2118 endpoints for XSS
