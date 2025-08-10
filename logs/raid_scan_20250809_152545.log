@@ -1,0 +1,9 @@
+2025-08-09 15:25:45,436 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250809_152545.log
+2025-08-09 15:25:45,453 - raid - INFO - initialize:86 - Initializing R.A.I.D Scanner Engine
+2025-08-09 15:25:45,630 - raid - INFO - initialize:99 - Engine initialized with 5 plugins in safe mode
+2025-08-09 15:25:45,632 - raid - INFO - run_scan:382 - Running scan with 3 plugins against 1 targets
+2025-08-09 15:25:45,633 - raid - INFO - run_scan:387 - Scanning target: http://testphp.vulnweb.com/
+2025-08-09 15:25:46,599 - raid - INFO - discover_endpoints:195 - Discovered 14 endpoints for http://testphp.vulnweb.com/
+2025-08-09 15:25:49,855 - raid - INFO - collect_parameters:235 - Collected 6 parameters across 2 endpoints
+2025-08-09 15:26:01,368 - raid - INFO - run_scan:426 - Target http://testphp.vulnweb.com/: 8 findings
+2025-08-09 15:26:01,401 - raid - INFO - run_scan:441 - Scan completed: 8 total findings

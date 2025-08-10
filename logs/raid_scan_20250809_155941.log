@@ -1,0 +1,38 @@
+2025-08-09 15:59:41,480 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs\raid_scan_20250809_155941.log
+2025-08-09 15:59:41,492 - raid - INFO - initialize:94 - Initializing R.A.I.D Scanner Engine
+2025-08-09 15:59:41,530 - raid - INFO - initialize:107 - Engine initialized with 5 plugins in safe mode
+2025-08-09 15:59:41,532 - raid - INFO - run_scan:457 - Running scan with 3 plugins against 1 targets
+2025-08-09 15:59:41,534 - raid - INFO - run_scan:462 - Scanning target: http://example.com/
+2025-08-09 15:59:42,151 - raid - INFO - create_scan_context:274 - Starting comprehensive target discovery...
+2025-08-09 15:59:42,160 - raid - INFO - comprehensive_discovery:618 - Starting parameter discovery...
+2025-08-09 15:59:42,163 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for http://example.com/
+2025-08-09 15:59:55,556 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 1 URLs with parameters
+2025-08-09 15:59:55,558 - raid - INFO - comprehensive_discovery:629 - Starting subdomain discovery...
+2025-08-09 15:59:55,560 - raid - INFO - discover_subdomains:412 - Starting subdomain discovery for example.com
+2025-08-09 16:00:29,321 - raid - INFO - discover_subdomains:434 - Subdomain discovery completed. Found 10 subdomains
+2025-08-09 16:00:29,322 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://m.example.com
+2025-08-09 16:00:29,419 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-09 16:00:29,420 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://m.testexample.com
+2025-08-09 16:00:41,420 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-09 16:00:41,422 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://dev.example.com
+2025-08-09 16:00:41,657 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-09 16:00:41,659 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://example.com
+2025-08-09 16:00:56,503 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 1 URLs with parameters
+2025-08-09 16:00:56,505 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://*.example.com
+2025-08-09 16:00:56,530 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-09 16:00:56,532 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://subjectname@example.com
+2025-08-09 16:01:03,541 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 1 URLs with parameters
+2025-08-09 16:01:03,544 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://support.example.com
+2025-08-09 16:01:03,631 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-09 16:01:03,633 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://products.example.com
+2025-08-09 16:01:03,847 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-09 16:01:03,849 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://www.example.com
+2025-08-09 16:01:47,129 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 1 URLs with parameters
+2025-08-09 16:01:47,130 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://user@example.com
+2025-08-09 16:02:01,588 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 1 URLs with parameters
+2025-08-09 16:02:01,590 - raid - INFO - comprehensive_discovery:651 - Discovery completed: 1 endpoints, 1 parameters, 10 subdomains
+2025-08-09 16:02:01,593 - raid - INFO - save_discovery_results:675 - Discovery results saved to reports\discovery_results.json
+2025-08-09 16:02:01,594 - raid - INFO - create_scan_context:304 - Discovery results saved to reports\discovery_results.json
+2025-08-09 16:02:01,596 - raid - INFO - create_scan_context:314 - Enhanced discovery completed: 5 endpoints, 5 parameters, 10 subdomains
+2025-08-09 16:02:27,924 - raid - INFO - run_scan:501 - Target http://example.com/: 3 findings
+2025-08-09 16:02:27,950 - raid - INFO - run_scan:516 - Scan completed: 3 total findings

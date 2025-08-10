@@ -1,0 +1,37 @@
+2025-08-10 10:44:50,324 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250810_104450.log
+2025-08-10 10:44:50,388 - raid - INFO - initialize:99 - Initializing R.A.I.D Scanner Engine
+2025-08-10 10:44:50,467 - raid - INFO - initialize:112 - Engine initialized with 4 plugins in safe mode
+2025-08-10 10:44:50,479 - raid - INFO - run_scan:484 - Running scan with 4 plugins against 1 targets
+2025-08-10 10:44:50,625 - raid - INFO - create_scan_context:280 - Starting comprehensive target discovery...
+2025-08-10 10:44:50,627 - raid - INFO - comprehensive_discovery:692 - Starting parameter discovery...
+2025-08-10 10:44:50,630 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://avrdc.org/
+2025-08-10 10:48:23,465 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 17 URLs with parameters
+2025-08-10 10:48:23,467 - raid - INFO - comprehensive_discovery:703 - Starting subdomain discovery...
+2025-08-10 10:48:23,469 - raid - INFO - discover_subdomains:486 - Starting subdomain discovery for avrdc.org
+2025-08-10 10:48:51,028 - raid - INFO - discover_subdomains:508 - Subdomain discovery completed. Found 30 subdomains
+2025-08-10 10:48:51,030 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://webmail.5523229.avrdc.org
+2025-08-10 10:48:53,885 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:48:53,887 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://webdisk.5523229.avrdc.org
+2025-08-10 10:48:55,493 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:48:55,495 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://www.seed.avrdc.org
+2025-08-10 10:49:18,153 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:49:18,155 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://cpanel.5523229.avrdc.org
+2025-08-10 10:49:19,457 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:49:19,459 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://avrdc.org
+2025-08-10 10:51:26,750 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 45 URLs with parameters
+2025-08-10 10:51:26,752 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://cpcalendars.5523229.avrdc.org
+2025-08-10 10:51:33,372 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:51:33,373 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://ns1.avrdc.org
+2025-08-10 10:51:49,681 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:51:49,682 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://whm.5523229.avrdc.org
+2025-08-10 10:51:50,487 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:51:50,488 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://cpcontacts.5523229.avrdc.org
+2025-08-10 10:51:52,270 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:51:52,272 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://mail.5523229.avrdc.org
+2025-08-10 10:52:12,482 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 10:52:12,483 - raid - INFO - comprehensive_discovery:725 - Discovery completed: 17 endpoints, 311 parameters, 30 subdomains
+2025-08-10 10:52:12,499 - raid - INFO - save_discovery_results:749 - Discovery results saved to reports/discovery_results.json
+2025-08-10 10:52:12,501 - raid - INFO - create_scan_context:310 - Discovery results saved to reports/discovery_results.json
+2025-08-10 10:52:12,502 - raid - INFO - create_scan_context:320 - Enhanced discovery completed: 46 endpoints, 4560 parameters, 30 subdomains
+2025-08-10 10:52:12,516 - raid - INFO - run:84 - Testing 4560 parameterized endpoints
+2025-08-10 10:52:12,523 - raid - INFO - run:71 - Testing 4560 endpoints for XSS

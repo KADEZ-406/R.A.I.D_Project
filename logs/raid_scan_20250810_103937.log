@@ -1,0 +1,5 @@
+2025-08-10 10:39:37,747 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250810_103937.log
+2025-08-10 10:39:37,800 - raid - INFO - initialize:99 - Initializing R.A.I.D Scanner Engine
+2025-08-10 10:39:38,039 - raid - WARNING - initialize:104 - No plugins loaded - scan will have limited functionality
+2025-08-10 10:39:38,054 - raid - INFO - initialize:112 - Engine initialized with 0 plugins in safe mode
+2025-08-10 10:39:38,069 - raid - WARNING - run_scan:481 - No compatible plugins found for scan

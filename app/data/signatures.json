@@ -1,0 +1,84 @@
+{
+  "sql_errors": [
+    "mysql_fetch_array()",
+    "ORA-01756",
+    "Microsoft OLE DB Provider for ODBC Drivers",
+    "PostgreSQL query failed",
+    "Warning: mysql_",
+    "MySQLSyntaxErrorException",
+    "valid MySQL result",
+    "PostgreSQL query failed: ERROR:",
+    "Warning: pg_",
+    "valid PostgreSQL result",
+    "Microsoft JET Database",
+    "ODBC Microsoft Access Driver",
+    "SQLServer JDBC Driver",
+    "SqlException",
+    "OleDbException", 
+    "System.Data.SqlClient.SqlException",
+    "Unclosed quotation mark after the character string",
+    "Microsoft OLE DB Provider for SQL Server",
+    "Incorrect syntax near"
+  ],
+  "generic_errors": [
+    "Internal Server Error",
+    "500 Internal Server Error", 
+    "Runtime Error",
+    "Fatal error:",
+    "Parse error:",
+    "Warning:",
+    "Notice:",
+    "Undefined variable:",
+    "Undefined index:",
+    "Division by zero",
+    "Call to undefined function"
+  ],
+  "database_errors": [
+    "Database connection failed",
+    "Access denied for user",
+    "Unknown database",
+    "Table doesn't exist",
+    "Column not found",
+    "Syntax error or access violation",
+    "Connection refused"
+  ],
+  "xss_indicators": [
+    "<script>alert(",
+    "javascript:alert(",
+    "onload=alert(",
+    "onerror=alert(",
+    "onmouseover=alert(",
+    "<svg onload=",
+    "<img src=x onerror="
+  ],
+  "file_inclusion_errors": [
+    "Warning: include(",
+    "Warning: require(",
+    "failed to open stream:",
+    "No such file or directory",
+    "Permission denied",
+    "open_basedir restriction"
+  ],
+  "command_injection_indicators": [
+    "uid=",
+    "gid=", 
+    "groups=",
+    "root:x:",
+    "bin:x:",
+    "daemon:x:",
+    "Volume in drive",
+    "Directory of",
+    "sh: command not found",
+    "is not recognized as an internal or external command"
+  ],
+  "debug_information": [
+    "Debug mode",
+    "Stack trace:",
+    "Traceback (most recent call last):",
+    "Exception in thread",
+    "at line",
+    "in file",
+    "Call Stack",
+    "Debug Information"
+  ]
+} 

@@ -1,0 +1,18 @@
+2025-08-09 15:57:42,626 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250809_155742.log
+2025-08-09 15:57:42,651 - raid - INFO - initialize:94 - Initializing R.A.I.D Scanner Engine
+2025-08-09 15:57:42,741 - raid - INFO - initialize:107 - Engine initialized with 5 plugins in safe mode
+2025-08-09 15:57:42,742 - raid - INFO - run_scan:457 - Running scan with 3 plugins against 1 targets
+2025-08-09 15:57:42,744 - raid - INFO - run_scan:462 - Scanning target: http://testphp.vulnweb.com/
+2025-08-09 15:57:42,999 - raid - INFO - create_scan_context:274 - Starting comprehensive target discovery...
+2025-08-09 15:57:43,001 - raid - INFO - comprehensive_discovery:618 - Starting parameter discovery...
+2025-08-09 15:57:43,003 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for http://testphp.vulnweb.com/
+2025-08-09 15:57:52,307 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 21 URLs with parameters
+2025-08-09 15:57:52,309 - raid - INFO - comprehensive_discovery:629 - Starting subdomain discovery...
+2025-08-09 15:57:52,310 - raid - INFO - discover_subdomains:412 - Starting subdomain discovery for testphp.vulnweb.com
+2025-08-09 15:57:54,743 - raid - INFO - discover_subdomains:434 - Subdomain discovery completed. Found 0 subdomains
+2025-08-09 15:57:54,744 - raid - INFO - comprehensive_discovery:651 - Discovery completed: 21 endpoints, 238 parameters, 0 subdomains
+2025-08-09 15:57:54,754 - raid - INFO - save_discovery_results:675 - Discovery results saved to reports/discovery_results.json
+2025-08-09 15:57:54,756 - raid - INFO - create_scan_context:304 - Discovery results saved to reports/discovery_results.json
+2025-08-09 15:57:54,757 - raid - INFO - create_scan_context:314 - Enhanced discovery completed: 21 endpoints, 238 parameters, 0 subdomains
+2025-08-09 15:58:03,478 - raid - INFO - run_scan:501 - Target http://testphp.vulnweb.com/: 8 findings
+2025-08-09 15:58:03,535 - raid - INFO - run_scan:516 - Scan completed: 8 total findings

@@ -1,0 +1,17 @@
+2025-08-09 17:09:10,193 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250809_170910.log
+2025-08-09 17:09:10,259 - raid - INFO - initialize:98 - Initializing R.A.I.D Scanner Engine
+2025-08-09 17:09:10,336 - raid - INFO - initialize:111 - Engine initialized with 5 plugins in safe mode
+2025-08-09 17:09:10,348 - raid - INFO - run_scan:483 - Running scan with 5 plugins against 1 targets
+2025-08-09 17:09:10,674 - raid - INFO - create_scan_context:279 - Starting comprehensive target discovery...
+2025-08-09 17:09:10,676 - raid - INFO - comprehensive_discovery:692 - Starting parameter discovery...
+2025-08-09 17:09:10,678 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for http://testphp.vulnweb.com/
+2025-08-09 17:09:16,925 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 22 URLs with parameters
+2025-08-09 17:09:16,927 - raid - INFO - comprehensive_discovery:703 - Starting subdomain discovery...
+2025-08-09 17:09:16,928 - raid - INFO - discover_subdomains:486 - Starting subdomain discovery for testphp.vulnweb.com
+2025-08-09 17:09:19,339 - raid - INFO - discover_subdomains:508 - Subdomain discovery completed. Found 0 subdomains
+2025-08-09 17:09:19,341 - raid - INFO - comprehensive_discovery:725 - Discovery completed: 22 endpoints, 511 parameters, 0 subdomains
+2025-08-09 17:09:19,352 - raid - INFO - save_discovery_results:749 - Discovery results saved to reports/discovery_results.json
+2025-08-09 17:09:19,354 - raid - INFO - create_scan_context:309 - Discovery results saved to reports/discovery_results.json
+2025-08-09 17:09:19,355 - raid - INFO - create_scan_context:319 - Enhanced discovery completed: 22 endpoints, 511 parameters, 0 subdomains
+2025-08-09 17:09:19,367 - raid - INFO - run:86 - Testing 511 parameterized endpoints
+2025-08-09 17:09:19,371 - raid - INFO - run:73 - Testing 511 endpoints for XSS

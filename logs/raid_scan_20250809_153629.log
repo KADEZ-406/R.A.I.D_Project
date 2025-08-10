@@ -1,0 +1,5 @@
+2025-08-09 15:36:29,636 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250809_153629.log
+2025-08-09 15:36:29,656 - raid - INFO - initialize:94 - Initializing R.A.I.D Scanner Engine
+2025-08-09 15:36:29,728 - raid - INFO - initialize:107 - Engine initialized with 5 plugins in safe mode
+2025-08-09 15:36:29,730 - raid - INFO - run_scan:453 - Running scan with 3 plugins against 1 targets
+2025-08-09 15:36:29,731 - raid - INFO - run_scan:458 - Scanning target: http://testphp.vulnweb.com/

@@ -1,0 +1,68 @@
+2025-08-09 16:04:00,727 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250809_160400.log
+2025-08-09 16:04:00,752 - raid - INFO - initialize:94 - Initializing R.A.I.D Scanner Engine
+2025-08-09 16:04:00,901 - raid - INFO - initialize:107 - Engine initialized with 5 plugins in lab mode
+2025-08-09 16:04:00,903 - raid - INFO - run_scan:457 - Running scan with 5 plugins against 1 targets
+2025-08-09 16:04:00,905 - raid - INFO - run_scan:462 - Scanning target: http://testphp.vulnweb.com/
+2025-08-09 16:04:01,171 - raid - INFO - create_scan_context:274 - Starting comprehensive target discovery...
+2025-08-09 16:04:01,173 - raid - INFO - comprehensive_discovery:618 - Starting parameter discovery...
+2025-08-09 16:04:01,175 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for http://testphp.vulnweb.com/
+2025-08-09 16:04:10,805 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 21 URLs with parameters
+2025-08-09 16:04:10,808 - raid - INFO - comprehensive_discovery:629 - Starting subdomain discovery...
+2025-08-09 16:04:10,810 - raid - INFO - discover_subdomains:412 - Starting subdomain discovery for testphp.vulnweb.com
+2025-08-09 16:04:28,610 - raid - INFO - discover_subdomains:434 - Subdomain discovery completed. Found 0 subdomains
+2025-08-09 16:04:28,611 - raid - INFO - comprehensive_discovery:651 - Discovery completed: 21 endpoints, 238 parameters, 0 subdomains
+2025-08-09 16:04:28,620 - raid - INFO - save_discovery_results:675 - Discovery results saved to reports/discovery_results.json
+2025-08-09 16:04:28,622 - raid - INFO - create_scan_context:304 - Discovery results saved to reports/discovery_results.json
+2025-08-09 16:04:28,623 - raid - INFO - create_scan_context:314 - Enhanced discovery completed: 21 endpoints, 238 parameters, 0 subdomains
+2025-08-09 16:04:28,626 - raid - INFO - run:86 - Testing 238 parameterized endpoints
+2025-08-09 16:04:28,629 - raid - INFO - run:73 - Testing 238 endpoints for XSS
+2025-08-09 16:06:19,694 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:06:19,696 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:06:19,698 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:06:19,700 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:14,724 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:14,727 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:14,729 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:14,732 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:34,075 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:34,078 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:34,080 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:34,082 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:37,841 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:37,843 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:37,845 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:08:37,848 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:04,530 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:04,532 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:04,534 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:04,536 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:07,899 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:07,901 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:07,904 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:07,906 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:29,278 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:29,281 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:29,283 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:09:29,285 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:10:28,744 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:10:28,747 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:10:28,749 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:10:28,751 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:11:26,900 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:11:26,903 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:11:26,905 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:11:26,907 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:11:46,620 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:11:46,625 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:11:46,627 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:11:46,630 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:12:09,074 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:12:09,077 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:12:09,079 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:12:09,081 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:12:30,433 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:12:30,435 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:12:30,437 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:12:30,446 - raid - WARNING - verify_xss_with_playwright:438 - Playwright not available for headless XSS verification
+2025-08-09 16:21:06,466 - raid - INFO - run_scan:501 - Target http://testphp.vulnweb.com/: 24 findings
+2025-08-09 16:21:06,536 - raid - INFO - run_scan:516 - Scan completed: 24 total findings

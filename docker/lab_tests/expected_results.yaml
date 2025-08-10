@@ -1,0 +1,156 @@
+# Expected Results for R.A.I.D Lab Tests
+# This file defines expected detection outcomes for synthetic vulnerability tests
+
+lab_tests:
+  
+  # SQL Injection Tests
+  sqli_error:
+    - endpoint: "http://localhost:5001/user"
+      parameter: "id"
+      expected_detection: true
+      expected_severity: "high"
+      expected_indicators:
+        - "error_signature"
+        - "status_changed"
+      min_confidence: 75
+      vulnerability_type: "sql_injection"
+      notes: "Should detect SQLite error messages when injection attempted"
+    
+    - endpoint: "http://localhost:5001/search"
+      parameter: "q"
+      expected_detection: true
+      expected_severity: "high"
+      expected_indicators:
+        - "error_signature"
+      min_confidence: 70
+      vulnerability_type: "sql_injection"
+      notes: "LIKE clause injection should trigger database errors"
+  
+  # XSS Tests
+  xss_reflected:
+    - endpoint: "http://localhost:5002/search"
+      parameter: "q"
+      expected_detection: true
+      expected_severity: "high"
+      expected_indicators:
+        - "xss_reflection"
+        - "body_diff"
+      min_confidence: 65
+      vulnerability_type: "xss"
+      notes: "Direct reflection of user input without encoding"
+    
+    - endpoint: "http://localhost:5002/welcome"
+      parameter: "name"
+      expected_detection: true
+      expected_severity: "high"
+      expected_indicators:
+        - "xss_reflection"
+        - "script_execution"  # If headless verification enabled
+      min_confidence: 70
+      vulnerability_type: "xss"
+      notes: "Reflection in JavaScript context should be detected"
+    
+    - endpoint: "http://localhost:5002/comment"
+      parameter: "message"
+      expected_detection: true
+      expected_severity: "high"
+      expected_indicators:
+        - "xss_reflection"
+      min_confidence: 60
+      vulnerability_type: "xss"
+      notes: "Reflection in HTML attribute context"
+    
+    - endpoint: "http://localhost:5002/profile"
+      parameter: "name"
+      expected_detection: true
+      expected_severity: "high"
+      expected_indicators:
+        - "xss_reflection"
+      min_confidence: 65
+      vulnerability_type: "xss"
+      notes: "Multiple reflection points should increase confidence"
+
+  # Negative Test Cases (should NOT be detected)
+  safe_endpoints:
+    - endpoint: "http://localhost:5002/safe_search"
+      parameter: "q"
+      expected_detection: false
+      notes: "Properly encoded input should not trigger XSS detection"
+    
+    - endpoint: "http://localhost:5001/health"
+      parameter: "any"
+      expected_detection: false
+      notes: "Health check endpoint should not be vulnerable"
+
+# Test Configuration
+test_config:
+  mode: "lab"
+  concurrency: 2
+  timeout: 30
+  
+  # Accuracy targets
+  accuracy_targets:
+    overall_precision: 0.90
+    overall_recall: 0.85
+    
+    by_vulnerability_type:
+      sql_injection:
+        precision: 0.92
+        recall: 0.88
+      xss:
+        precision: 0.89
+        recall: 0.85
+  
+  # Test mutation patterns (lab mode only)
+  test_payloads:
+    sql_injection:
+      basic_error: "'"
+      double_quote: "\""
+      comment_injection: "'; --"
+      union_test: "' UNION SELECT NULL--"
+      boolean_test: "' OR '1'='1"
+    
+    xss:
+      script_basic: "<script>alert('XSS')</script>"
+      img_onerror: "<img src=x onerror=alert('XSS')>"
+      svg_onload: "<svg onload=alert('XSS')>"
+      javascript_url: "javascript:alert('XSS')"
+
+# False Positive Analysis
+false_positive_analysis:
+  common_causes:
+    - "Dynamic content changes"
+    - "Session token variations"
+    - "Timestamp differences"
+    - "Rate limiting responses"
+  
+  mitigation_strategies:
+    - "Improve response normalization"
+    - "Increase confidence thresholds"
+    - "Add more sophisticated comparison metrics"
+    - "Implement better error signature matching"
+
+# Performance Benchmarks
+performance_benchmarks:
+  max_scan_time_seconds: 300
+  max_requests_per_endpoint: 10
+  expected_throughput_rps: 5
+  
+  resource_limits:
+    max_memory_mb: 512
+    max_cpu_percent: 50
+
+# Test Environment Requirements
+environment_requirements:
+  docker_services:
+    - "sqli_error_test"
+    - "xss_reflected_test"
+  
+  network_isolation: true
+  external_access: false
+  
+  health_checks:
+    - url: "http://localhost:5001/health"
+      expected_status: 200
+    - url: "http://localhost:5002/health"
+      expected_status: 200 

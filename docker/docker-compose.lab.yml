@@ -1,0 +1,229 @@
+version: '3.8'
+
+services:
+  # OWASP WebGoat - Java-based vulnerable web application
+  webgoat:
+    image: webgoat/webgoat:v8.2.2
+    container_name: raid-lab-webgoat
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    environment:
+      - WEBGOAT_HOST=0.0.0.0
+      - WEBGOAT_PORT=8080
+      - WEBWOLF_HOST=0.0.0.0
+      - WEBWOLF_PORT=9090
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=webgoat"
+      - "raid.lab.description=OWASP WebGoat vulnerable web application"
+      - "raid.lab.url=http://localhost:8080/WebGoat"
+
+  # OWASP Juice Shop - Modern vulnerable web application
+  juiceshop:
+    image: bkimminich/juice-shop:v14.5.1
+    container_name: raid-lab-juiceshop
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=unsafe
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=juiceshop"
+      - "raid.lab.description=OWASP Juice Shop modern vulnerable web application"
+      - "raid.lab.url=http://localhost:3000"
+
+  # DVWA - Damn Vulnerable Web Application
+  dvwa:
+    image: vulnerables/web-dvwa:latest
+    container_name: raid-lab-dvwa
+    ports:
+      - "8082:80"
+    environment:
+      - MYSQL_HOST=dvwa-db
+      - MYSQL_DATABASE=dvwa
+      - MYSQL_USER=dvwa
+      - MYSQL_PASSWORD=password
+      - RECAPTCHA_PRIV_KEY=""
+      - RECAPTCHA_PUB_KEY=""
+    depends_on:
+      - dvwa-db
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=dvwa"
+      - "raid.lab.description=Damn Vulnerable Web Application"
+      - "raid.lab.url=http://localhost:8082"
+      - "raid.lab.credentials=admin:password"
+
+  # MySQL database for DVWA
+  dvwa-db:
+    image: mysql:5.7
+    container_name: raid-lab-dvwa-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=dvwa
+      - MYSQL_USER=dvwa
+      - MYSQL_PASSWORD=password
+    volumes:
+      - dvwa-db-data:/var/lib/mysql
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+
+  # bWAPP - Buggy Web Application
+  bwapp:
+    image: raesene/bwapp
+    container_name: raid-lab-bwapp
+    ports:
+      - "8083:80"
+    depends_on:
+      - bwapp-db
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=bwapp"
+      - "raid.lab.description=bWAPP Buggy Web Application"
+      - "raid.lab.url=http://localhost:8083/install.php"
+
+  # MySQL database for bWAPP
+  bwapp-db:
+    image: mysql:5.7
+    container_name: raid-lab-bwapp-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=bWAPP
+      - MYSQL_USER=bwapp
+      - MYSQL_PASSWORD=password
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+
+  # Mutillidae II - OWASP Vulnerable Web Application
+  mutillidae:
+    image: citizenstig/nowasp
+    container_name: raid-lab-mutillidae
+    ports:
+      - "8084:80"
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=mutillidae"
+      - "raid.lab.description=Mutillidae II OWASP vulnerable web application"
+      - "raid.lab.url=http://localhost:8084/mutillidae"
+
+  # NodeGoat - OWASP Node.js vulnerable application
+  nodegoat:
+    image: owasp/nodegoat
+    container_name: raid-lab-nodegoat
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGODB_URI=mongodb://nodegoat-db:27017/nodegoat
+    depends_on:
+      - nodegoat-db
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=nodegoat"
+      - "raid.lab.description=OWASP NodeGoat vulnerable Node.js application"
+      - "raid.lab.url=http://localhost:4000"
+
+  # MongoDB for NodeGoat
+  nodegoat-db:
+    image: mongo:4.4
+    container_name: raid-lab-nodegoat-db
+    volumes:
+      - nodegoat-db-data:/data/db
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+
+  # VAmPI - Vulnerable REST API
+  vampi:
+    image: erev0s/vampi:latest
+    container_name: raid-lab-vampi
+    ports:
+      - "5000:5000"
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=vampi"
+      - "raid.lab.description=VAmPI Vulnerable REST API"
+      - "raid.lab.url=http://localhost:5000"
+
+  # Lab Management Dashboard
+  lab-dashboard:
+    image: nginx:alpine
+    container_name: raid-lab-dashboard
+    ports:
+      - "8000:80"
+    volumes:
+      - ./lab-dashboard:/usr/share/nginx/html:ro
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=dashboard"
+      - "raid.lab.description=R.A.I.D Lab Management Dashboard"
+      - "raid.lab.url=http://localhost:8000"
+
+  # Synthetic Test Cases for Evaluation
+  sqli-error-test:
+    build:
+      context: ./lab_tests
+      dockerfile: Dockerfile.sqli
+    container_name: raid-lab-sqli-test
+    ports:
+      - "5001:5001"
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=sqli_test"
+      - "raid.lab.description=SQL Injection Test Case"
+      - "raid.lab.url=http://localhost:5001"
+
+  xss-reflected-test:
+    build:
+      context: ./lab_tests
+      dockerfile: Dockerfile.xss
+    container_name: raid-lab-xss-test
+    ports:
+      - "5002:5002"
+    networks:
+      - raid-lab-network
+    restart: unless-stopped
+    labels:
+      - "raid.lab.app=xss_test"
+      - "raid.lab.description=XSS Reflection Test Case"
+      - "raid.lab.url=http://localhost:5002"
+
+networks:
+  raid-lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  dvwa-db-data:
+    driver: local
+  nodegoat-db-data:
+    driver: local
+
+# Health check and monitoring
+x-healthcheck-defaults: &healthcheck-defaults
+  interval: 30s
+  timeout: 10s
+  retries: 3
+  start_period: 60s 
