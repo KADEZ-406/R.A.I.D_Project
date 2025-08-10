@@ -60,7 +60,8 @@ class ScanEngine:
                  force: bool = False,
                  output_dir: str = "./reports",
                  logger: Optional[logging.Logger] = None,
-                 progress_manager=None):
+                 progress_manager=None,
+                 max_param_checks: int = 0):
         
         self.mode = mode
         self.concurrency = concurrency
@@ -76,6 +77,7 @@ class ScanEngine:
         self.result_manager = ResultManager(output_dir)
         self.payload_manager = PayloadManager()
         self.progress_manager = progress_manager
+        self.max_param_checks = max(0, int(max_param_checks))
         
         # Enhanced discovery components (initialized later with session)
         self.enhanced_discovery = None
@@ -275,6 +277,8 @@ class ScanEngine:
             logger=self.logger,
             progress_manager=self.progress_manager
         )
+        # propagate limits to plugins via context
+        setattr(context, "max_param_checks", self.max_param_checks)
         
         # Enhanced discovery process
         self.logger.info("Starting comprehensive target discovery...")
@@ -465,19 +469,18 @@ class ScanEngine:
         all_findings = []
         scan_results = {}
         
-        # Initialize progress tracking
+        # Get plugins to run (do this before starting progress to set accurate totals)
+        plugins = self.plugin_loader.filter_plugins(
+            plugin_list=plugin_list,
+            mode=self.mode
+        )
+
+        # Initialize progress tracking with accurate plugin count
         if self.progress_manager:
-            # Start with plugin count, will be updated dynamically per-parameterized checks
-            initial_checks = len(targets) * len(self.plugin_loader.discover_plugins())
+            initial_checks = len(targets) * max(1, len(plugins))
             self.progress_manager.start_scan(initial_checks, log_payloads, self.mode, targets[0] if targets else "")
         
         try:
-            # Get plugins to run
-            plugins = self.plugin_loader.filter_plugins(
-                plugin_list=plugin_list,
-                mode=self.mode
-            )
-            
             if not plugins:
                 self.logger.warning("No compatible plugins found for scan")
                 return {"findings": [], "stats": {}}
@@ -495,6 +498,22 @@ class ScanEngine:
                 # Create scan context
                 context = await self.create_scan_context(normalized_target)
                 
+                # Apply parameter check limits for safe mode or when explicitly set
+                if self.max_param_checks > 0:
+                    limited_parameters: Dict[str, Set[str]] = {}
+                    # Flatten endpoints by priority: keep discovery order for now
+                    total_assigned = 0
+                    for endpoint, params in context.parameters.items():
+                        if total_assigned >= self.max_param_checks:
+                            break
+                        remaining = self.max_param_checks - total_assigned
+                        selected = set(list(params)[:max(0, remaining)])
+                        if selected:
+                            limited_parameters[endpoint] = selected
+                            total_assigned += len(selected)
+                    if limited_parameters:
+                        context.parameters = limited_parameters
+                
                 # Log discovery information
                 if self.progress_manager:
                     self.progress_manager.log_discovery_info(
@@ -508,10 +527,11 @@ class ScanEngine:
                 
                 # Track plugin execution with progress
                 plugin_count = 0
+                plugin_total = len(plugins)
                 for plugin_name, plugin_module in plugins.items():
                     plugin_count += 1
                     if self.progress_manager:
-                        self.progress_manager.log_plugin_start(plugin_name, plugin_count)
+                        self.progress_manager.log_plugin_start(plugin_name, plugin_count, plugin_total)
                     
                     # For parameterized plugins, estimate additional progress units based on discovered parameters
                     if self.progress_manager and plugin_name in ("xss_heuristic", "sqli_heuristic"):

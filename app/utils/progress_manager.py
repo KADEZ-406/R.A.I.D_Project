@@ -138,11 +138,15 @@ class ProgressManager:
         if self.verbosity >= 1 or level in ("VULNERABLE", "ERROR"):
             self.console.print(f"[{timestamp}] [{level}] {message}", style=color)
     
-    def log_plugin_start(self, plugin_name: str, check_number: int = None):
-        """Log when a plugin starts running."""
+    def log_plugin_start(self, plugin_name: str, check_number: int = None, plugin_total: int = None):
+        """Log when a plugin starts running.
+        If plugin_total is provided, show check_number/plugin_total to avoid confusion with dynamic total checks.
+        """
         if self.verbosity >= 1:
-            if check_number:
-                self.log_message("INFO", f"Running check: {plugin_name} [{check_number}/{self.total_checks}]")
+            if check_number and plugin_total:
+                self.log_message("INFO", f"Running check: {plugin_name} [{check_number}/{plugin_total}]")
+            elif check_number:
+                self.log_message("INFO", f"Running check: {plugin_name} [{check_number}]")
             else:
                 self.log_message("INFO", f"Running check: {plugin_name}")
     

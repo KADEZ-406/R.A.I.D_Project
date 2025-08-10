@@ -70,18 +70,23 @@ async def run(target: str, session, context) -> List[Finding]:
         
         context.logger.info(f"Testing {len(parameterized_endpoints)} endpoints for XSS")
         
-        # Process each endpoint
-    for idx, endpoint_data in enumerate(parameterized_endpoints, start=1):
-        # Update progress per endpoint
-        if context.progress_manager:
-            context.progress_manager.update_progress("xss_heuristic", endpoint_data["url"], check_number=idx)
+        # Apply max parameter checks limit if provided via context
+        limit = getattr(context, "max_param_checks", 0)
+        if limit and limit > 0:
+            parameterized_endpoints = parameterized_endpoints[:limit]
 
-        endpoint_findings = await test_endpoint_for_xss(
-            endpoint_data, session, context, comparator
-        )
-        findings.extend(endpoint_findings)
-        
-        await asyncio.sleep(CONFIG["delay_between_requests"])
+        # Process each endpoint
+        for idx, endpoint_data in enumerate(parameterized_endpoints, start=1):
+            # Update progress per endpoint
+            if context.progress_manager:
+                context.progress_manager.update_progress("xss_heuristic", endpoint_data["url"], check_number=idx)
+
+            endpoint_findings = await test_endpoint_for_xss(
+                endpoint_data, session, context, comparator
+            )
+            findings.extend(endpoint_findings)
+
+            await asyncio.sleep(CONFIG["delay_between_requests"])
     
     except Exception as e:
         error_finding = Finding(

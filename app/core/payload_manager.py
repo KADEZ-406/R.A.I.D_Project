@@ -19,6 +19,22 @@ class PayloadManager:
         self.templates_file = Path(templates_file)
         self.templates: Dict[str, Any] = {}
         self.logger = logging.getLogger(__name__)
+        # Known alias map to bridge plugin pattern IDs to JSON templates
+        self._alias_map = {
+            # XSS
+            "xss_script_basic": ("xss", "basic"),
+            "xss_img_onerror": ("xss", "event_handlers"),
+            "xss_svg_onload": ("xss", "event_handlers"),
+            "xss_javascript_url": ("xss", "javascript_protocol"),
+            # SQLi
+            "sql_error_quote": ("sql_injection", "error_based"),
+            "sql_error_double_quote": ("sql_injection", "error_based"),
+            "sql_boolean_or": ("sql_injection", "basic"),
+            "sql_boolean_and": ("sql_injection", "basic"),
+            "sql_union_select": ("sql_injection", "union"),
+            "sql_comment": ("sql_injection", "error_based"),
+            "sql_semicolon": ("sql_injection", "basic"),
+        }
         
         # Refusal log for tracking bypass attempts
         self.refusal_log = Path("refusal.log")
@@ -99,7 +115,21 @@ class PayloadManager:
     
     def get_template(self, template_id: str) -> Optional[Dict[str, Any]]:
         """Get a specific payload template."""
-        return self.templates.get(template_id)
+        # Direct lookup
+        direct = self.templates.get(template_id)
+        if direct is not None:
+            return direct
+        # Nested lookup via alias map
+        alias = self._alias_map.get(template_id)
+        if alias:
+            category, name = alias
+            try:
+                category_dict = self.templates.get(category)
+                if isinstance(category_dict, dict):
+                    return category_dict.get(name)
+            except Exception:
+                return None
+        return None
     
     def get_templates_by_category(self, category: str) -> Dict[str, Any]:
         """Get all templates for a specific category."""
@@ -132,7 +162,8 @@ class PayloadManager:
         """Render a payload from template with parameters."""
         template_data = self.get_template(template_id)
         if not template_data:
-            self.logger.error(f"Template not found: {template_id}")
+            # Downgrade noise: many calls may probe optional templates
+            self.logger.debug(f"Template not found: {template_id}")
             return None
         
         # Check mode compatibility

@@ -1,0 +1,22 @@
+2025-08-10 14:46:34,891 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250810_144634.log
+2025-08-10 14:46:34,930 - raid - INFO - initialize:101 - Initializing R.A.I.D Scanner Engine
+2025-08-10 14:46:35,074 - raid - INFO - initialize:114 - Engine initialized with 4 plugins in lab mode
+2025-08-10 14:46:35,080 - raid - INFO - run_scan:488 - Running scan with 4 plugins against 1 targets
+2025-08-10 14:46:35,229 - raid - INFO - create_scan_context:284 - Starting comprehensive target discovery...
+2025-08-10 14:46:35,230 - raid - INFO - comprehensive_discovery:693 - Starting parameter discovery...
+2025-08-10 14:46:35,243 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://smkmikael.sch.id/
+2025-08-10 14:46:53,121 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 78 URLs with parameters
+2025-08-10 14:46:53,123 - raid - INFO - comprehensive_discovery:704 - Starting subdomain discovery...
+2025-08-10 14:46:53,124 - raid - INFO - discover_subdomains:486 - Starting subdomain discovery for smkmikael.sch.id
+2025-08-10 14:46:58,238 - raid - INFO - discover_subdomains:508 - Subdomain discovery completed. Found 21 subdomains
+2025-08-10 14:46:58,240 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://siakad.smkmikael.sch.id
+2025-08-10 14:46:58,599 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 2 URLs with parameters
+2025-08-10 14:46:58,600 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://www.siakad.smkmikael.sch.id
+2025-08-10 14:46:58,943 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 1 URLs with parameters
+2025-08-10 14:46:58,944 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://pop.smkmikael.sch.id
+2025-08-10 14:46:59,613 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:46:59,615 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://www.soapserver.smkmikael.sch.id
+2025-08-10 14:46:59,883 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:46:59,885 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://mail.smkmikael.sch.id
+2025-08-10 14:47:00,350 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:47:00,352 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://www.smkmikael.sch.id

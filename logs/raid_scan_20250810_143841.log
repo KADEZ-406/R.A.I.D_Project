@@ -1,0 +1,33 @@
+2025-08-10 14:38:41,350 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250810_143841.log
+2025-08-10 14:38:41,387 - raid - INFO - initialize:99 - Initializing R.A.I.D Scanner Engine
+2025-08-10 14:38:41,515 - raid - INFO - initialize:112 - Engine initialized with 4 plugins in lab mode
+2025-08-10 14:38:41,519 - raid - INFO - run_scan:484 - Running scan with 4 plugins against 1 targets
+2025-08-10 14:38:41,666 - raid - INFO - create_scan_context:280 - Starting comprehensive target discovery...
+2025-08-10 14:38:41,668 - raid - INFO - comprehensive_discovery:693 - Starting parameter discovery...
+2025-08-10 14:38:41,677 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://smkmikael.sch.id/
+2025-08-10 14:38:57,495 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 78 URLs with parameters
+2025-08-10 14:38:57,497 - raid - INFO - comprehensive_discovery:704 - Starting subdomain discovery...
+2025-08-10 14:38:57,498 - raid - INFO - discover_subdomains:486 - Starting subdomain discovery for smkmikael.sch.id
+2025-08-10 14:39:19,974 - raid - INFO - discover_subdomains:508 - Subdomain discovery completed. Found 8 subdomains
+2025-08-10 14:39:19,976 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://mail.smkmikael.sch.id
+2025-08-10 14:39:21,624 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:39:21,625 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://localhost.smkmikael.sch.id
+2025-08-10 14:39:22,715 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:39:22,719 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://ftp.smkmikael.sch.id
+2025-08-10 14:39:25,501 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:39:25,503 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://cpanel.smkmikael.sch.id
+2025-08-10 14:39:26,395 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 7 URLs with parameters
+2025-08-10 14:39:26,396 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://webmail.smkmikael.sch.id
+2025-08-10 14:39:30,316 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:39:30,317 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://smtp.smkmikael.sch.id
+2025-08-10 14:39:32,417 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:39:32,418 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://pop.smkmikael.sch.id
+2025-08-10 14:39:33,069 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 0 URLs with parameters
+2025-08-10 14:39:33,071 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://www.smkmikael.sch.id
+2025-08-10 14:40:06,842 - raid - INFO - crawl_parameters:80 - Parameter crawling completed. Found 36 URLs with parameters
+2025-08-10 14:40:06,844 - raid - INFO - comprehensive_discovery:726 - Discovery completed: 78 endpoints, 1345 parameters, 8 subdomains
+2025-08-10 14:40:06,859 - raid - INFO - save_discovery_results:750 - Discovery results saved to reports/discovery_results.json
+2025-08-10 14:40:06,860 - raid - INFO - create_scan_context:310 - Discovery results saved to reports/discovery_results.json
+2025-08-10 14:40:06,862 - raid - INFO - create_scan_context:320 - Enhanced discovery completed: 121 endpoints, 1946 parameters, 8 subdomains
+2025-08-10 14:40:06,915 - raid - INFO - run:84 - Testing 1942 parameterized endpoints
+2025-08-10 14:40:06,920 - raid - INFO - run:71 - Testing 1942 endpoints for XSS

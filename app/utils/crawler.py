@@ -517,10 +517,9 @@ class SubdomainDiscovery:
         """Dictionary-based subdomain brute force."""
         subdomains = set()
         
-        tasks = []
+        # Build limited tasks without creating un-awaited coroutines
         for subdomain in self.subdomain_wordlist:
-            full_subdomain = f"{subdomain}.{domain}"
-            tasks.append(self._check_subdomain(full_subdomain))
+            pass  # list consumed below in gather call
         
         # Limit concurrent requests
         semaphore = asyncio.Semaphore(10)
@@ -529,8 +528,10 @@ class SubdomainDiscovery:
             async with semaphore:
                 return await self._check_subdomain(subdomain)
         
-        results = await asyncio.gather(*[limited_check(f"{sub}.{domain}") for sub in self.subdomain_wordlist], 
-                                     return_exceptions=True)
+        results = await asyncio.gather(
+            *[limited_check(f"{sub}.{domain}") for sub in self.subdomain_wordlist],
+            return_exceptions=True
+        )
         
         for result in results:
             if result and not isinstance(result, Exception):

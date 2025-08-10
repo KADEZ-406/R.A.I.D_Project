@@ -187,6 +187,10 @@ def scan(
     max_subdomains: int = typer.Option(
         50, "--max-subdomains",
         help="Maximum number of subdomains to discover"
+    ),
+    max_param_checks: int = typer.Option(
+        0, "--max-param-checks",
+        help="Limit number of parameterized endpoint checks per plugin (0 = no limit)"
     )
 ):
     """Run a security scan against the specified target(s)."""
@@ -246,7 +250,8 @@ def scan(
             force=force,
             output_dir=output_dir,
             logger=logger,
-            progress_manager=progress_manager
+            progress_manager=progress_manager,
+            max_param_checks=max_param_checks
         )
         
         # Configure discovery options

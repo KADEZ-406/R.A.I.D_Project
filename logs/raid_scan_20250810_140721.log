@@ -1,0 +1,7 @@
+2025-08-10 14:07:21,261 - raid - INFO - setup_logger:78 - Detailed logs saved to: logs/raid_scan_20250810_140721.log
+2025-08-10 14:07:21,287 - raid - INFO - initialize:99 - Initializing R.A.I.D Scanner Engine
+2025-08-10 14:07:21,379 - raid - INFO - initialize:112 - Engine initialized with 2 plugins in safe mode
+2025-08-10 14:07:21,390 - raid - INFO - run_scan:485 - Running scan with 2 plugins against 1 targets
+2025-08-10 14:07:21,526 - raid - INFO - create_scan_context:280 - Starting comprehensive target discovery...
+2025-08-10 14:07:21,528 - raid - INFO - comprehensive_discovery:692 - Starting parameter discovery...
+2025-08-10 14:07:21,536 - raid - INFO - crawl_parameters:69 - Starting parameter crawling for https://avrdc.org/
