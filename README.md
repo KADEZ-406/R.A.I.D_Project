@@ -59,8 +59,8 @@
 
 ```bash
 # Clone repository
-git clone https://github.com/kadez-406/raid-scanner.git
-cd raid-scanner
+git clone https://github.com/KADEZ-406/R.A.I.D_Project
+cd R.A.I.D_Project
 
 # Install dependencies
 pip install -r requirements.txt
